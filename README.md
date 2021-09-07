@@ -13,7 +13,7 @@ Paste the _private key_ (`SSH_KEY`) and _known_hosts_ (`KNOWN_HOST`) into two sp
 ## Usage
 
 ```yaml
-runs-on: ubuntu-latet
+runs-on: ubuntu-latest
 steps:
 - name: Deploy
   uses: vacare/anofuss-upload@v1
