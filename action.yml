@@ -1,0 +1,36 @@
+name: 'anofuss-upload'
+description: 'Upload files using rsync/ssh'
+branding:
+  icon: upload-cloud
+  color: purple
+inputs:
+  host:
+    description: 'hostname'
+    required: true
+  username:
+    description: 'username'
+    required: true
+  key:
+    description: 'private key'
+    required: true
+  known_hosts:
+    description: 'known_hosts'
+    required: true
+  source:
+    description: 'source file'
+    required: true
+  target:
+    description: 'target file'
+    required: true
+    
+runs:
+   using: "composite"
+   steps:
+     - run: echo "${{ inputs.key }}" > key
+       shell: bash
+     - run: echo "${{ inputs.known_hosts }}" > host
+       shell: bash
+     - run: chmod 600 key host
+       shell: bash
+     - run: rsync -az -e 'ssh -i key -o UserKnownHostsFile=host' ${{ inputs.source }} ${{ inputs.username }}@${{ inputs.host }}:${{ inputs.target }}
+       shell: bash
