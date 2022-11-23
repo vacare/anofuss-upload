@@ -12,6 +12,8 @@ Paste the _private key_ (`SSH_KEY`) and _known_hosts_ (`KNOWN_HOST`) into two sp
 
 ## Usage
 
+### Minimal configuration
+
 ```yaml
 runs-on: ubuntu-latet
 steps:
@@ -22,6 +24,23 @@ steps:
     username: deploy
     key: ${{ secrets.SSH_KEY }}
     known_hosts: ${{ secrets.KNOWN_HOSTS }}
+    source: build/lib/app.war
+    target: /deploy
+```
+
+### Configuration using optional
+
+```yaml
+runs-on: ubuntu-latet
+steps:
+- name: Deploy
+  uses: vacare/anofuss-upload@v1
+  with:
+    host: example.com
+    username: deploy
+    key: ${{ secrets.SSH_KEY }}
+    known_hosts: ${{ secrets.KNOWN_HOSTS }}
+    optional '--delete'
     source: build/lib/app.war
     target: /deploy
 ```
