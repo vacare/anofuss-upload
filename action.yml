@@ -1,4 +1,4 @@
-name: 'anofuss-upload'
+name: 'Anofuss Upload'
 description: 'Upload files using rsync/ssh'
 branding:
   icon: upload-cloud

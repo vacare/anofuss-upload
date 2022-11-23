@@ -1,4 +1,4 @@
-# anofuss-upload
+# Anofuss Upload
 
 Upload file(s) from a `source` to a specific `target` on `host` without depending on untrusted/unknown docker images or javascript libraries.
 
