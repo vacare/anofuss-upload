@@ -40,7 +40,9 @@ steps:
     username: deploy
     key: ${{ secrets.SSH_KEY }}
     known_hosts: ${{ secrets.KNOWN_HOSTS }}
-    arguments: '--delete'
+    # --delete   delete extraneous files from dest dirs
+    # --checksum skip based on checksum, not mod-time & size
+    arguments: '--delete --checksum'
     source: build/lib/app.war
     target: /deploy
 ```
