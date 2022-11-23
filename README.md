@@ -28,7 +28,7 @@ steps:
     target: /deploy
 ```
 
-### Configuration using optional
+### Configuration using custom arguments
 
 ```yaml
 runs-on: ubuntu-latet
@@ -40,7 +40,7 @@ steps:
     username: deploy
     key: ${{ secrets.SSH_KEY }}
     known_hosts: ${{ secrets.KNOWN_HOSTS }}
-    optional '--delete'
+    arguments: '--delete'
     source: build/lib/app.war
     target: /deploy
 ```

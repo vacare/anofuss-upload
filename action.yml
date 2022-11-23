@@ -22,7 +22,7 @@ inputs:
   target:
     description: 'target file'
     required: true
-  optional:
+  arguments:
     description: 'additional arguments'
     required: false
     default: '' 
@@ -36,5 +36,5 @@ runs:
        shell: bash
      - run: chmod 600 key host
        shell: bash
-     - run: rsync -az ${{ inputs.optional }} -e 'ssh -i key -o UserKnownHostsFile=host' ${{ inputs.source }} ${{ inputs.username }}@${{ inputs.host }}:${{ inputs.target }}
+     - run: rsync -az ${{ inputs.arguments }} -e 'ssh -i key -o UserKnownHostsFile=host' ${{ inputs.source }} ${{ inputs.username }}@${{ inputs.host }}:${{ inputs.target }}
        shell: bash
